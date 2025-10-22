@@ -11,7 +11,7 @@ function reIncreaser(req, res,next){
     res.json({
         msg:"Error"        //else we have to add this to threo an error
      })
-    */
+    
 }
 
 function  sumHandler(req, res) {
