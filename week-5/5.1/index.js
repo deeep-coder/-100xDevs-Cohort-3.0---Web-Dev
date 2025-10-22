@@ -52,3 +52,51 @@ app.get("/substract", function(req, res) {
 };
 
 app.listen(3000);
+
+// <-----------------------------                     ----------------------------->
+
+
+// Same code using dynamic parameters
+
+const express = require("express");
+
+const app = express();
+
+app.get("/sum/:a/:b", function(req, res) {          //dynamic parameters - means colon ke bad jo bhi hoga that will be the parameters 
+    const a = parseInt(req.params.a)                //idhar query ke jagh param likhna pdega 
+    const b = parseInt(req.params.b)
+    res.json({
+        ans: a+b
+    })
+
+});
+
+app.get("/multiply/:a/:b", function(req, res) {
+    const a = parseInt(req.params.a)           
+    const b = parseInt(req.params.b)
+    res.json({
+        ans: a*b
+    })
+    
+});
+
+app.get("/divide/:a/:b", function(req, res) {
+    const a = parseInt(req.params.a)    
+    const b = parseInt(req.params.b)
+    res.json({
+        ans: a/b
+    })    
+
+});
+
+app.get("/subtract/:a/:b", function(req, res) {
+    const a = parseInt(req.params.a)    
+    const b = parseInt(req.params.b)
+    res.json({
+        ans: a-b
+    })
+
+});
+
+
+app.listen(3000);
