@@ -5,7 +5,7 @@ const app =express();
 
 app.use(express.json());
 
-const users =[];  //in memory variable
+const users =[];  //in memory variable or also known as empty global array for storing the username, password, token
 
 
 function generateToken() {  //a function called generateToken that generates a random long string for token generation
@@ -14,7 +14,7 @@ function generateToken() {  //a function called generateToken that generates a r
     let token = "";
     for (let i = 0; i < 32; i++) {
         // use a simple function here
-        token += options[Math.floor(Math.random() * options.length)];
+        token += options[Math.floor(Math.random() * options.length)];  //idhar se woh ek random token create krega 32 bits k 
     }
     return token;
 }
@@ -69,11 +69,50 @@ app.post("/signin",function(req,res){
         foundUser.token=token;  //foundUser array me latest token ko  username and password ke sath  store karenge 
 
         res.json({
-            message: token
+            token: token
         })  
     }
+    else{                                           //aur username ya password  found nahi  hua toh invalid bta dega
+        res.status(403).send({
+            message:"Invalid username or password"
+        })
+    }  
         
 })
 
 
+app.get("/me", function(req,res){               //Created an authenticated EndPoint which  returns the user information only if they send their token
+    const token = req.headers.token              //Jo meta data mein hmlg kuch kuch cookies send krte hai wahi header ke andar hoga woh token bhi jyega 
+    let foundUser = null;
+
+    // Searches the users array for a user whose token matches the token from the request header. If a match found, that user object is stored in foundUser
+    for (let i = 0; i < users.length; i++) {
+        if(users[i].token == token){
+            foundUser =users[i]
+        }            
+    }
+
+    if(foundUser){
+        res.json({
+            username: foundUser.username,
+            password: foundUser.password
+        })
+    }
+    else{
+        res.json({
+            message:"Token Invalid"
+        })
+    }
+
+});
+    
+
+
 app.listen(3000);
+
+/*
+Notes:
+- Phle postman mein jayenge udhar localhost:3000/signup mein post req se do teen input denge username password ka body mein json object ke andar..
+- Phir localhost:3000/signin mein jaynge aur post req krke uspe post req pe jo input diye gye username password jo diye hai usse usko snd req krenge toh ek token milega 
+- phir localhost:3000/me mein jaynge aur then headers pe jayenge aur add krenge token ko aur jo token generate kiye hue hai usko copy paste kr denge headers mein token mein aur req send krenge jisse woh jis bhi username oassword ka token hai woh mko output mein return krega 
+*/

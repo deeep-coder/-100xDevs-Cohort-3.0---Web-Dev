@@ -21,12 +21,12 @@ app.listen(3001)
 
 /*
 Notes:
-- To use cors first we have to do npm install cors
+- To use CORS first we have to do npm install cors
 - Then we write the second line
 - If we want to allow all frontend to send the request then we will write it as :
         - app.use(cors())
-- Agar if we want like sirf is is frontend se request ana chahiye then we will specify that :
-a       -app.use(cors({
+- if we want that ki sirf frontend se request ana chahiye then we will specify that :
+      -app.use(cors({
             Domain:["https://google.com", "https://hdfcbank.com"]
         }))
 
@@ -35,9 +35,9 @@ a       -app.use(cors({
 
 1. Why do we need CORS (Cross Origin Resource Sharing)?
 Ans:    - Every website has its frontend and backend part, frontend part like - https//google.com and backend part like - https//api.google.com
-        - Ab yeh frontend part includes html,css,js react,js codes.
+        - frontend part includes html,css,js react,js codes.
         - and backend part includes the server side code like the node.js , express codes
-        - ab as a developer ham toh yeh hi chahnge ki google.com ka frontend, google ke backend api.google.com ko connect na ki google.com kisi aur suppose api.hdfcbank.com ko connect kare 
+        - as a developer we want that google.com ka frontend, google ke backend api.google.com ko connect na ki google.com kisi aur suppose api.hdfcbank.com ko connect kare 
         - for this CORS is required and by default node.js mein CORS disabled hota hai.
 
 

@@ -22,7 +22,7 @@ app.get("/multiply", function(req, res) {
         ans : a*b
     })
 
-};
+})
 app.get("/sum", function(req, res) {
     const a = paresInt(req.query.a);
     const b = paresInt(req.query.b);
@@ -31,7 +31,7 @@ app.get("/sum", function(req, res) {
         ans : a+b
     })
 
-};
+})
 app.get("/divide", function(req, res) {
     const a = parseInt(req.query.a);
     const b = parseInt(req.query.b);
@@ -40,7 +40,8 @@ app.get("/divide", function(req, res) {
         ans : a/b
     })
 
-};
+})
+
 app.get("/substract", function(req, res) {
     const a = req.query.a;
     const b = req.query.b;
@@ -49,20 +50,20 @@ app.get("/substract", function(req, res) {
         ans : a-b
     })
 
-};
+})
 
-app.listen(3000);
-
+app.listen(3000)
 // <-----------------------------                     ----------------------------->
 
 
 // Same code using dynamic parameters
 
+/*
 const express = require("express");
 
-const app = express();
+const expressapp = express();
 
-app.get("/sum/:a/:b", function(req, res) {          //dynamic parameters - means colon ke bad jo bhi hoga that will be the parameters 
+expressapp.get("/sum/:a/:b", function(req, res) {          //dynamic parameters - means colon ke bad jo bhi hoga that will be the parameters 
     const a = parseInt(req.params.a)                //idhar query ke jagh param likhna pdega 
     const b = parseInt(req.params.b)
     res.json({
@@ -71,7 +72,7 @@ app.get("/sum/:a/:b", function(req, res) {          //dynamic parameters - means
 
 });
 
-app.get("/multiply/:a/:b", function(req, res) {
+expressapp.get("/multiply/:a/:b", function(req, res) {
     const a = parseInt(req.params.a)           
     const b = parseInt(req.params.b)
     res.json({
@@ -80,7 +81,7 @@ app.get("/multiply/:a/:b", function(req, res) {
     
 });
 
-app.get("/divide/:a/:b", function(req, res) {
+expressapp.get("/divide/:a/:b", function(req, res) {
     const a = parseInt(req.params.a)    
     const b = parseInt(req.params.b)
     res.json({
@@ -89,7 +90,7 @@ app.get("/divide/:a/:b", function(req, res) {
 
 });
 
-app.get("/subtract/:a/:b", function(req, res) {
+expressapp.get("/subtract/:a/:b", function(req, res) {
     const a = parseInt(req.params.a)    
     const b = parseInt(req.params.b)
     res.json({
@@ -99,4 +100,4 @@ app.get("/subtract/:a/:b", function(req, res) {
 });
 
 
-app.listen(3000);
+expressapp.listen(3000); */
