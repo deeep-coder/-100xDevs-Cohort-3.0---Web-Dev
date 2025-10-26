@@ -1,0 +1,23 @@
+{
+  "name": "-100xdevs-cohort-3.0---web-dev",
+  "version": "1.0.0",
+  "description": "🚀 Welcome to my wed Dev notes repo of 100xDevs Cohort 3.0 by Harkirat Singh ! This repository is your ultimate guide to mastering:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deeep-coder/-100xDevs-Cohort-3.0---Web-Dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deeep-coder/-100xDevs-Cohort-3.0---Web-Dev/issues"
+  },
+  "homepage": "https://github.com/deeep-coder/-100xDevs-Cohort-3.0---Web-Dev#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
