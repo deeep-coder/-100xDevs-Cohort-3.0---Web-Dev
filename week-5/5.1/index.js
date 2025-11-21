@@ -14,10 +14,15 @@
 const express = require("express");
 const app = express();
 
+
+const port = 3000;
+
 app.get("/multiply", function(req, res) {
     const a = req.query.a;
     const b = req.query.b;
-
+    if (isNaN(a) || isNaN(b)) {
+        return res.status(400).json({ error: "Invalid query" })
+    }
     res.json({
         ans : a*b
     })
@@ -26,7 +31,9 @@ app.get("/multiply", function(req, res) {
 app.get("/sum", function(req, res) {
     const a = paresInt(req.query.a);
     const b = paresInt(req.query.b);
-
+    if (isNaN(a) || isNaN(b)) {
+        return res.status(400).json({ error: "Invalid query" })
+    }
     res.json({
         ans : a+b
     })
@@ -35,7 +42,9 @@ app.get("/sum", function(req, res) {
 app.get("/divide", function(req, res) {
     const a = parseInt(req.query.a);
     const b = parseInt(req.query.b);
-
+    if (isNaN(a) || isNaN(b)) {
+        return res.status(400).json({ error: "Invalid query" })
+    }
     res.json({
         ans : a/b
     })
@@ -45,14 +54,21 @@ app.get("/divide", function(req, res) {
 app.get("/substract", function(req, res) {
     const a = req.query.a;
     const b = req.query.b;
-
+    if (isNaN(a) || isNaN(b)) {
+        return res.status(400).json({ error: "Invalid query" })
+    }
     res.json({
         ans : a-b
     })
 
 })
 
-app.listen(3000)
+
+app.listen(port, () => {
+    console.log(`Server is listening at port:  ${port}`);
+
+})
+
 // <-----------------------------                     ----------------------------->
 
 
