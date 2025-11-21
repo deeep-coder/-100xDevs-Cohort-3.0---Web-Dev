@@ -25,7 +25,7 @@ function isOldEnoughMiddleware(req,res,next){
     }
 }
 
-app.use(isOldEnoughMiddleware);  // below this all request use middleware
+app.use(isOldEnoughMiddleware);  // below this all request will  use middleware
 
 app.get("/ride1", function(req, res) {
     res.json({
