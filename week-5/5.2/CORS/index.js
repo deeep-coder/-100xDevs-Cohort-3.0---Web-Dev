@@ -1,24 +1,45 @@
+/*
+Assignment-
 
-const express = require("express");
-const cors = require("cors")
+1.create a backend server in nodejs that return the endpoint
+2.wtite an html file that hits the backend server using the ferch api
+*/
+
+import express from 'express'
+import cors from 'cors'
+
 
 const app = express();
+const port = 3000;
+
+
+
+// Enable CORS
+app.use(cors()) //this is allow all frontend to send req to your backend
+
 
 app.use(express.json())
 
-app.use(cors()) //this is allow all frontend to send req to ur backend
-
-app.post("/sum", function  sumHandler(req, res) {       
-
-    const a = parseInt(req.body.a)
-    const b = parseInt(req.body.b)
-    
-    res.json({
-        ans: a+b
-    });
+// Serve HTML file
+app.get('/', (req, res) => {
+    res.sendFile(__dirname, '/index.html');
 });
 
-app.listen(3001)
+app.post('/sum', (req, res) => {
+    const a = parseInt(req.body.a);
+    const b = parseInt(req.body.b);
+    console.log(req.body);
+
+
+    res.json({ ans: a + b })
+})
+
+
+
+app.listen(port, () => {
+    console.log(`Server is running at port ${port}`);
+
+})
 
 /*
 Notes:
