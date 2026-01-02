@@ -2,7 +2,7 @@
 Assignment-
 
 1.create a backend server in nodejs that return the endpoint
-2.wtite an html file that hits the backend server using the ferch api
+2.write an html file that hits the backend server using the ferch api
 */
 
 import express from 'express'
