@@ -1,18 +1,24 @@
-import jwt from 'jsonwebtoken'
-export const JWT_SECRET = "123123"                      
+const JWT_SECRET = process.env.JWT_SECRET;
+const jwt = require("jsonwebtoken");
 
-export function auth(req, res, next) {
-    const token = req.headers.token
-    const decoded = jwt.verify(token, JWT_SECRET)
+function authMiddleware(req, res, next) {
+  try {
+    const token = req.headers.token;
+    const verifiedToken = jwt.verify(token, JWT_SECRET);
 
-    if (decoded) {
-        req.userId = decoded.id
-        next()
+    if (verifiedToken) {
+      req.userId = verifiedToken.id;
+      next();
     } else {
-        res.status(403).json({
-            msg: "Incorrect credentials"
-        })
+      res.status(403).json({ message: "Invalid credentials" });
     }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Authentication failed" });
+  }
 }
 
-// export default auth
+module.exports = {
+  authMiddleware,
+  JWT_SECRET,
+};
